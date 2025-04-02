@@ -11,12 +11,50 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        
+        // Проверяем, что у нас есть сцена окна
+            guard let windowScene = (scene as? UIWindowScene) else { return }
+
+                // Создаем окно
+            window = UIWindow(windowScene: windowScene)
+
+        
+            let feedVC = UIViewController()
+            feedVC.view.backgroundColor = .systemBackground
+            feedVC.title = "Лента"
+
+            let profileVC = UIViewController()
+            profileVC.view.backgroundColor = .systemBackground
+            profileVC.title = "Профиль"
+
+                
+            let feedNav = UINavigationController(rootViewController: feedVC)
+            feedNav.tabBarItem = UITabBarItem(title: "Лента", image: UIImage(systemName:"list.bullet"), tag: 0)
+
+            let profileNav = UINavigationController(rootViewController: profileVC)
+            profileNav.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person.circle"), tag: 1)
+        
+            feedNav.tabBarItem = UITabBarItem(
+                title: "Лента",
+                image: UIImage(named: "feedIcon"),
+                selectedImage: UIImage(named: "feedIconSelected")
+            )
+
+            profileNav.tabBarItem = UITabBarItem(
+                title: "Профиль",
+                image: UIImage(named: "profileIcon"),
+                selectedImage: UIImage(named: "profileIconSelected")
+            )
+        
+            let tabBarController = UITabBarController()
+            tabBarController.viewControllers = [feedNav, profileNav]
+
+            window?.rootViewController = tabBarController
+            window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
