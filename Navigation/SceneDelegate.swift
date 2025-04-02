@@ -23,27 +23,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window = UIWindow(windowScene: windowScene)
 
         
-            let feedVC = UIViewController()
-            feedVC.view.backgroundColor = .systemBackground
-            feedVC.title = "Лента"
+            let feedVC = FeedViewController()
+            let profileVC = ProfileViewController()
 
-            let profileVC = UIViewController()
-            profileVC.view.backgroundColor = .systemBackground
-            profileVC.title = "Профиль"
-
-                
             let feedNav = UINavigationController(rootViewController: feedVC)
-            feedNav.tabBarItem = UITabBarItem(title: "Лента", image: UIImage(systemName:"list.bullet"), tag: 0)
-
-            let profileNav = UINavigationController(rootViewController: profileVC)
-            profileNav.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person.circle"), tag: 1)
-        
             feedNav.tabBarItem = UITabBarItem(
                 title: "Лента",
                 image: UIImage(named: "feedIcon"),
                 selectedImage: UIImage(named: "feedIconSelected")
             )
 
+            let profileNav = UINavigationController(rootViewController: profileVC)
             profileNav.tabBarItem = UITabBarItem(
                 title: "Профиль",
                 image: UIImage(named: "profileIcon"),
