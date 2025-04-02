@@ -20,7 +20,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             guard let windowScene = (scene as? UIWindowScene) else { return }
 
                 // Создаем окно
-            window = UIWindow(windowScene: windowScene)
 
         
             let feedVC = FeedViewController()
@@ -43,6 +42,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let tabBarController = UITabBarController()
             tabBarController.viewControllers = [feedNav, profileNav]
 
+            window = UIWindow(windowScene: windowScene)
             window?.rootViewController = tabBarController
             window?.makeKeyAndVisible()
     }
