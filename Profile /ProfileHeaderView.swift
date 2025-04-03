@@ -1,10 +1,9 @@
 import UIKit
 
 class ProfileHeaderView: UIView {
-    
+
     private let avatarImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "avatar")
+        let imageView = UIImageView(image: UIImage(named: "avatar"))
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 50
         imageView.layer.borderWidth = 3
@@ -44,7 +43,7 @@ class ProfileHeaderView: UIView {
     }()
     
     private let setStatusButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.setTitle("Set status", for: .normal)
         button.backgroundColor = .systemBlue
         button.setTitleColor(.white, for: .normal)
@@ -56,7 +55,7 @@ class ProfileHeaderView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -70,7 +69,7 @@ class ProfileHeaderView: UIView {
         setupConstraints()
         setStatusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
-    
+
     private func setupView() {
         backgroundColor = .lightGray
         addSubview(avatarImageView)
@@ -81,32 +80,41 @@ class ProfileHeaderView: UIView {
     }
     
     private func setupConstraints() {
+        let guide = safeAreaLayoutGuide
+        
         NSLayoutConstraint.activate([
-            avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
-            avatarImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            // Аватар
+            avatarImageView.topAnchor.constraint(equalTo: guide.topAnchor, constant: 20),
+            avatarImageView.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 16),
             avatarImageView.widthAnchor.constraint(equalToConstant: 100),
             avatarImageView.heightAnchor.constraint(equalToConstant: 100),
             
+            // Имя
             fullNameLabel.topAnchor.constraint(equalTo: avatarImageView.topAnchor, constant: 27),
             fullNameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
-            fullNameLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            fullNameLabel.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: -16),
             
+            // Статус
             statusLabel.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: 8),
             statusLabel.leadingAnchor.constraint(equalTo: fullNameLabel.leadingAnchor),
             statusLabel.trailingAnchor.constraint(equalTo: fullNameLabel.trailingAnchor),
             
+            // Статус (текстовое поле)
             statusTextField.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 34),
-            statusTextField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            statusTextField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            statusTextField.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 16),
+            statusTextField.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: -16),
             statusTextField.heightAnchor.constraint(equalToConstant: 40),
             
+            // Кнопка
             setStatusButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 16),
-            setStatusButton.leadingAnchor.constraint(equalTo: statusTextField.leadingAnchor),
-            setStatusButton.trailingAnchor.constraint(equalTo: statusTextField.trailingAnchor),
+            setStatusButton.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 16),
+            setStatusButton.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: -16),
             setStatusButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     
+    // MARK: - Action
+
     @objc private func buttonPressed() {
         print("Status from text field: \(statusTextField.text ?? "")")
     }
