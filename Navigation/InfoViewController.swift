@@ -5,7 +5,7 @@ class InfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        title = "Инфо"
+        title = "Info"
 
         setupAlertButton()
 
@@ -18,7 +18,7 @@ class InfoViewController: UIViewController {
 
     private func setupAlertButton() {
         let button = UIButton(type: .system)
-        button.setTitle("Показать алерт", for: .normal)
+        button.setTitle("Show alert", for: .normal)
         button.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
 
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -32,17 +32,17 @@ class InfoViewController: UIViewController {
 
     @objc private func showAlert() {
         let alert = UIAlertController(
-            title: "Внимание",
-            message: "Выберите действие",
+            title: "!ALERT!",
+            message: "Chose action",
             preferredStyle: .alert
         )
 
-        let actionOne = UIAlertAction(title: "Первое", style: .default) { _ in
-            print("Нажато: Первое действие")
+        let actionOne = UIAlertAction(title: "Blue action", style: .default) { _ in
+            print("Pressed: Blue action")
         }
 
-        let actionTwo = UIAlertAction(title: "Второе", style: .destructive) { _ in
-            print("Нажато: Второе действие")
+        let actionTwo = UIAlertAction(title: "Red action", style: .destructive) { _ in
+            print("Pressed: Red action")
         }
 
         alert.addAction(actionOne)

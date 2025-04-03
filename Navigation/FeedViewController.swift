@@ -4,13 +4,13 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        title = "Лента"
+        title = "feed"
         setupButton()
     }
 
     private func setupButton() {
         let button = UIButton(type: .system)
-        button.setTitle("Открыть пост", for: .normal)
+        button.setTitle("Open post", for: .normal)
         button.addTarget(self, action: #selector(openPost), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(button)
