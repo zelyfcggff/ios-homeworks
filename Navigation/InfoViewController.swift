@@ -9,7 +9,6 @@ class InfoViewController: UIViewController {
 
         setupAlertButton()
 
-        // Добавим кнопку "Закрыть" слева в навигации
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .close,
             target: self,
