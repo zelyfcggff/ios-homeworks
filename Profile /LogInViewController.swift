@@ -49,23 +49,25 @@ class LogInViewController: UIViewController {
         button.setTitle("Log In", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-        button.backgroundColor = UIColor(named: "LoginColor")
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
         button.translatesAutoresizingMaskIntoConstraints = false
 
-        button.addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)
-        button.addTarget(self, action: #selector(buttonTouchUp), for: [.touchUpInside, .touchUpOutside, .touchCancel])
+        if let bgImage = UIImage(named: "blue_pixel") {
+            button.setBackgroundImage(bgImage, for: .normal)
+            button.setBackgroundImage(bgImage.withAlpha(0.8), for: .highlighted)
+            button.setBackgroundImage(bgImage.withAlpha(0.8), for: .selected)
+            button.setBackgroundImage(bgImage.withAlpha(0.8), for: .disabled)
+        }
+
+        button.addTarget(self, action: #selector(logInButtonTapped), for: .touchUpInside)
 
         return button
     }()
 
-    @objc private func buttonTouchDown() {
-        logInButton.alpha = 0.8
-    }
-
-    @objc private func buttonTouchUp() {
-        logInButton.alpha = 1.0
+    @objc private func logInButtonTapped() {
+        let profileVC = ProfileViewController()
+        navigationController?.pushViewController(profileVC, animated: true)
     }
 
     override func viewDidLoad() {
@@ -96,7 +98,6 @@ class LogInViewController: UIViewController {
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
     }
@@ -126,12 +127,9 @@ class LogInViewController: UIViewController {
             logInButton.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
             logInButton.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor),
             logInButton.heightAnchor.constraint(equalToConstant: 50),
-
-            logInButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20) // для scrollView
+            logInButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
         ])
     }
-
-    // MARK: - Keyboard Handling
 
     private func setupKeyboardObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
@@ -152,8 +150,6 @@ class LogInViewController: UIViewController {
         scrollView.contentInset = .zero
     }
 
-    // MARK: - Hide Keyboard on Tap
-
     private func hideKeyboardWhenTappedAround() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
@@ -161,5 +157,16 @@ class LogInViewController: UIViewController {
 
     @objc private func dismissKeyboard() {
         view.endEditing(true)
+    }
+}
+
+// MARK: - UIImage alpha helper
+extension UIImage {
+    func withAlpha(_ alpha: CGFloat) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        draw(at: .zero, blendMode: .normal, alpha: alpha)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return newImage
     }
 }
