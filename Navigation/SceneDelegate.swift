@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         
             let feedVC = FeedViewController()
-            let profileVC = ProfileViewController()
+            let profileVC = LogInViewController()
 
             let feedNav = UINavigationController(rootViewController: feedVC)
             feedNav.tabBarItem = UITabBarItem(

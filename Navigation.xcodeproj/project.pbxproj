@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		830A8D242D9E90E300E25E18 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830A8D232D9E8FE200E25E18 /* ProfileViewController.swift */; };
 		830A8D252D9E910800E25E18 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830A8D1E2D9E8CC300E25E18 /* ProfileHeaderView.swift */; };
+		83C64B532D9EDD86002A38A0 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C64B522D9EDD85002A38A0 /* LogInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 		838EDBD42D9D0B04008B3BAB /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		838EDBEA2D9D0B04008B3BAB /* NavigationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NavigationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		838EDBF42D9D0B04008B3BAB /* NavigationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NavigationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		83C64B522D9EDD85002A38A0 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -113,6 +115,7 @@
 		830A8D212D9E8F6300E25E18 /* Profile  */ = {
 			isa = PBXGroup;
 			children = (
+				83C64B522D9EDD85002A38A0 /* LogInViewController.swift */,
 				830A8D232D9E8FE200E25E18 /* ProfileViewController.swift */,
 				830A8D1E2D9E8CC300E25E18 /* ProfileHeaderView.swift */,
 			);
@@ -281,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				830A8D252D9E910800E25E18 /* ProfileHeaderView.swift in Sources */,
+				83C64B532D9EDD86002A38A0 /* LogInViewController.swift in Sources */,
 				830A8D242D9E90E300E25E18 /* ProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
