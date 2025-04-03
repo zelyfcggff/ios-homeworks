@@ -41,6 +41,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				AppDelegate.swift,
+				Assets.xcassets,
 				FeedViewController.swift,
 				InfoViewController.swift,
 				Post.swift,
