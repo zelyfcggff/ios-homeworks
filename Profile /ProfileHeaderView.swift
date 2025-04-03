@@ -112,8 +112,6 @@ class ProfileHeaderView: UIView {
             setStatusButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
-    
-    // MARK: - Action
 
     @objc private func buttonPressed() {
         print("Status from text field: \(statusTextField.text ?? "")")
