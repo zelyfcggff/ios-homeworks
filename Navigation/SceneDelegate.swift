@@ -27,14 +27,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
             let feedNav = UINavigationController(rootViewController: feedVC)
             feedNav.tabBarItem = UITabBarItem(
-                title: "Лента",
+                title: "Feed",
                 image: UIImage(named: "feedIcon"),
                 selectedImage: UIImage(named: "feedIconSelected")
             )
 
             let profileNav = UINavigationController(rootViewController: profileVC)
             profileNav.tabBarItem = UITabBarItem(
-                title: "Профиль",
+                title: "Profile",
                 image: UIImage(named: "profileIcon"),
                 selectedImage: UIImage(named: "profileIconSelected")
             )

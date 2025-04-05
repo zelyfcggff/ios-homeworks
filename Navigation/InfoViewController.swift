@@ -2,10 +2,17 @@ import UIKit
 
 class InfoViewController: UIViewController {
 
+    private let alertButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Show alert", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        title = "Инфо"
+        title = "Info"
 
         setupAlertButton()
 
@@ -17,32 +24,29 @@ class InfoViewController: UIViewController {
     }
 
     private func setupAlertButton() {
-        let button = UIButton(type: .system)
-        button.setTitle("Показать алерт", for: .normal)
-        button.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
-
-        button.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(button)
+        view.addSubview(alertButton)
 
         NSLayoutConstraint.activate([
-            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            alertButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            alertButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
+        
+        alertButton.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
     }
 
     @objc private func showAlert() {
         let alert = UIAlertController(
-            title: "Внимание",
-            message: "Выберите действие",
+            title: "!Attention!",
+            message: "Chose action",
             preferredStyle: .alert
         )
 
-        let actionOne = UIAlertAction(title: "Первое", style: .default) { _ in
-            print("Нажато: Первое действие")
+        let actionOne = UIAlertAction(title: "Blue", style: .default) { _ in
+            print("Blue action pressed")
         }
 
-        let actionTwo = UIAlertAction(title: "Второе", style: .destructive) { _ in
-            print("Нажато: Второе действие")
+        let actionTwo = UIAlertAction(title: "Red", style: .destructive) { _ in
+            print("Red action pressed")
         }
 
         alert.addAction(actionOne)

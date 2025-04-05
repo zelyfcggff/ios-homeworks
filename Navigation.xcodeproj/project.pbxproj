@@ -30,32 +30,45 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		830A8C4B2D9E815F00E25E18 /* Exceptions for "Navigation" folder in "Navigation" target */ = {
+		830A8D132D9E8C2200E25E18 /* Exceptions for "Navigation" folder in "Navigation" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				AppDelegate.swift,
+				Assets.xcassets,
+				FeedViewController.swift,
+				InfoViewController.swift,
+				Post.swift,
+				PostViewController.swift,
+				ProfileViewController.swift,
+				SceneDelegate.swift,
 			);
 			target = 838EDBD32D9D0B04008B3BAB /* Navigation */;
+		};
+		830A8D142D9E8C2200E25E18 /* Exceptions for "Navigation" folder in "NavigationTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				AppDelegate.swift,
+				Assets.xcassets,
+				FeedViewController.swift,
+				Info.plist,
+				InfoViewController.swift,
+				Post.swift,
+				PostViewController.swift,
+				ProfileViewController.swift,
+				SceneDelegate.swift,
+			);
+			target = 838EDBE92D9D0B04008B3BAB /* NavigationTests */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		838EDBD62D9D0B04008B3BAB /* Navigation */ = {
+		830A8D082D9E8C2200E25E18 /* Navigation */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				830A8C4B2D9E815F00E25E18 /* Exceptions for "Navigation" folder in "Navigation" target */,
+				830A8D132D9E8C2200E25E18 /* Exceptions for "Navigation" folder in "Navigation" target */,
+				830A8D142D9E8C2200E25E18 /* Exceptions for "Navigation" folder in "NavigationTests" target */,
 			);
 			path = Navigation;
-			sourceTree = "<group>";
-		};
-		838EDBED2D9D0B04008B3BAB /* NavigationTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = NavigationTests;
-			sourceTree = "<group>";
-		};
-		838EDBF72D9D0B04008B3BAB /* NavigationUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = NavigationUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -88,9 +101,7 @@
 		838EDBCB2D9D0B04008B3BAB = {
 			isa = PBXGroup;
 			children = (
-				838EDBD62D9D0B04008B3BAB /* Navigation */,
-				838EDBED2D9D0B04008B3BAB /* NavigationTests */,
-				838EDBF72D9D0B04008B3BAB /* NavigationUITests */,
+				830A8D082D9E8C2200E25E18 /* Navigation */,
 				838EDBD52D9D0B04008B3BAB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -120,9 +131,6 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				838EDBD62D9D0B04008B3BAB /* Navigation */,
-			);
 			name = Navigation;
 			packageProductDependencies = (
 			);
@@ -144,7 +152,7 @@
 				838EDBEC2D9D0B04008B3BAB /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				838EDBED2D9D0B04008B3BAB /* NavigationTests */,
+				830A8D082D9E8C2200E25E18 /* Navigation */,
 			);
 			name = NavigationTests;
 			packageProductDependencies = (
@@ -165,9 +173,6 @@
 			);
 			dependencies = (
 				838EDBF62D9D0B04008B3BAB /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				838EDBF72D9D0B04008B3BAB /* NavigationUITests */,
 			);
 			name = NavigationUITests;
 			packageProductDependencies = (

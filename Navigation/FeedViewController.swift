@@ -1,24 +1,31 @@
 import UIKit
 
 class FeedViewController: UIViewController {
+
+    private let openPostButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Open post", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        title = "Лента"
+        title = "Feed"
+
         setupButton()
     }
 
     private func setupButton() {
-        let button = UIButton(type: .system)
-        button.setTitle("Открыть пост", for: .normal)
-        button.addTarget(self, action: #selector(openPost), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(button)
-
+        view.addSubview(openPostButton)
+        
         NSLayoutConstraint.activate([
-            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            openPostButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            openPostButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
+        
+        openPostButton.addTarget(self, action: #selector(openPost), for: .touchUpInside)
     }
 
     @objc private func openPost() {

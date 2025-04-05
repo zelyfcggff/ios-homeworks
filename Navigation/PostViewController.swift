@@ -4,15 +4,26 @@ class PostViewController: UIViewController {
 
     var post: Post?
 
+    private let infoButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(
+            title: "Info",
+            style: .plain,
+            target: nil,
+            action: nil
+        )
+        return button
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemYellow
         title = post?.title
-        setupInfoButton()
+        setupNavigationBar()
     }
 
-    private func setupInfoButton() {
-        let infoButton = UIBarButtonItem(title: "Info", style: .plain, target: self, action: #selector(openInfo))
+    private func setupNavigationBar() {
+        infoButton.target = self
+        infoButton.action = #selector(openInfo)
         navigationItem.rightBarButtonItem = infoButton
     }
 
