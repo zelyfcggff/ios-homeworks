@@ -4,7 +4,7 @@ class ProfileHeaderView: UIView {
 
     private let avatarImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "profile") 
+        imageView.image = UIImage(named: "profile")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 50
@@ -46,6 +46,8 @@ class ProfileHeaderView: UIView {
         button.layer.shadowOffset = CGSize(width: 4, height: 4)
         button.layer.shadowRadius = 4
         button.layer.shadowOpacity = 0.7
+
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
 
         return button
     }()
@@ -90,5 +92,9 @@ class ProfileHeaderView: UIView {
             statusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             statusButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+
+    @objc private func buttonPressed() {
+        print(statusLabel.text ?? "No status")
     }
 }
