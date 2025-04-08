@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		834D73032DA3BF5E00397965 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D73022DA3BB9600397965 /* ProfileViewController.swift */; };
 		834D73052DA3BF8100397965 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D73002DA3BAB100397965 /* ProfileHeaderView.swift */; };
+		834D73072DA518E600397965 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D73062DA518E500397965 /* LogInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		834D73002DA3BAB100397965 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		834D73022DA3BB9600397965 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		834D73062DA518E500397965 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		838EDBD42D9D0B04008B3BAB /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		838EDBEA2D9D0B04008B3BAB /* NavigationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NavigationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		838EDBF42D9D0B04008B3BAB /* NavigationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NavigationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +109,7 @@
 		834D72FF2DA3BA9D00397965 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				834D73062DA518E500397965 /* LogInViewController.swift */,
 				834D73022DA3BB9600397965 /* ProfileViewController.swift */,
 				834D73002DA3BAB100397965 /* ProfileHeaderView.swift */,
 			);
@@ -270,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				834D73072DA518E600397965 /* LogInViewController.swift in Sources */,
 				834D73032DA3BF5E00397965 /* ProfileViewController.swift in Sources */,
 				834D73052DA3BF8100397965 /* ProfileHeaderView.swift in Sources */,
 			);
