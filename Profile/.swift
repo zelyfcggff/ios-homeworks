@@ -1,3 +1,11 @@
+//
+//  LogInViewController 2.swift
+//  Navigation
+//
+//  Created by Vladimir Zykov on 08.04.2025.
+//
+
+
 import UIKit
 
 class LogInViewController: UIViewController {
@@ -32,7 +40,6 @@ class LogInViewController: UIViewController {
     private let passwordTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Password"
-        textField.isSecureTextEntry = true
         textField.backgroundColor = .systemGray6
         textField.textColor = .black
         textField.font = UIFont.systemFont(ofSize: 16)
@@ -40,7 +47,7 @@ class LogInViewController: UIViewController {
         textField.layer.cornerRadius = 10
         textField.layer.borderWidth = 0.5
         textField.layer.borderColor = UIColor.lightGray.cgColor
-        textField.autocapitalizationType = .none
+        textField.isSecureTextEntry = true
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -56,14 +63,19 @@ class LogInViewController: UIViewController {
 
         if let bgImage = UIImage(named: "blue_pixel") {
             button.setBackgroundImage(bgImage, for: .normal)
-            button.setBackgroundImage(bgImage.withAlpha(0.8), for: .highlighted)
-            button.setBackgroundImage(bgImage.withAlpha(0.8), for: .selected)
-            button.setBackgroundImage(bgImage.withAlpha(0.8), for: .disabled)
+            button.setBackgroundImage(bgImage.withAlphaComponent(0.8), for: .highlighted)
+            button.setBackgroundImage(bgImage.withAlphaComponent(0.8), for: .selected)
+            button.setBackgroundImage(bgImage.withAlphaComponent(0.8), for: .disabled)
         }
 
         button.addTarget(self, action: #selector(logInButtonTapped), for: .touchUpInside)
+
         return button
     }()
+
+    @objc private func logInButtonTapped() {
+        print("Log In button tapped")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,11 +87,6 @@ class LogInViewController: UIViewController {
         setupLayout()
         setupKeyboardObservers()
         hideKeyboardWhenTappedAround()
-    }
-    
-    @objc private func logInButtonTapped() {
-        let profileVC = ProfileViewController()
-        navigationController?.pushViewController(profileVC, animated: true)
     }
 
     private func setupScrollView() {
@@ -99,9 +106,11 @@ class LogInViewController: UIViewController {
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
     }
+
     private func setupLayout() {
         [logoImageView, emailTextField, passwordTextField, logInButton].forEach {
             contentView.addSubview($0)
@@ -158,15 +167,5 @@ class LogInViewController: UIViewController {
 
     @objc private func dismissKeyboard() {
         view.endEditing(true)
-    }
-}
-
-private extension UIImage {
-    func withAlpha(_ alpha: CGFloat) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(size, false, scale)
-        draw(at: .zero, blendMode: .normal, alpha: alpha)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage ?? self
     }
 }

@@ -23,7 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         
             let feedVC = FeedViewController()
-        let profileVC = LogInViewController()
+            let profileVC = LogInViewController()
+            profileVC.hidesBottomBarWhenPushed = true
 
             let feedNav = UINavigationController(rootViewController: feedVC)
             feedNav.tabBarItem = UITabBarItem(
