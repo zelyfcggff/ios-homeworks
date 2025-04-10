@@ -17,13 +17,10 @@ class LogInViewController: UIViewController {
     private let emailTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Email or phone"
-        textField.backgroundColor = .systemGray6
+        textField.backgroundColor = .clear
         textField.textColor = .black
         textField.font = UIFont.systemFont(ofSize: 16)
         textField.tintColor = .systemBlue
-        textField.layer.cornerRadius = 10
-        textField.layer.borderWidth = 0.5
-        textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.autocapitalizationType = .none
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -33,16 +30,54 @@ class LogInViewController: UIViewController {
         let textField = UITextField()
         textField.placeholder = "Password"
         textField.isSecureTextEntry = true
-        textField.backgroundColor = .systemGray6
+        textField.backgroundColor = .clear
         textField.textColor = .black
         textField.font = UIFont.systemFont(ofSize: 16)
         textField.tintColor = .systemBlue
-        textField.layer.cornerRadius = 10
-        textField.layer.borderWidth = 0.5
-        textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.autocapitalizationType = .none
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
+    }()
+
+    private let dividerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .lightGray
+        view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            view.heightAnchor.constraint(equalToConstant: 0.5)
+        ])
+        return view
+    }()
+
+    private lazy var stackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [emailTextField, dividerView, passwordTextField])
+        stack.axis = .vertical
+        stack.spacing = 0
+        stack.distribution = .fill
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+
+    private lazy var containerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray6
+        view.layer.cornerRadius = 10
+        view.layer.borderWidth = 0.5
+        view.layer.borderColor = UIColor.lightGray.cgColor
+        view.translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(stackView)
+
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: view.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            emailTextField.heightAnchor.constraint(equalToConstant: 50),
+            passwordTextField.heightAnchor.constraint(equalToConstant: 50)
+        ])
+
+        return view
     }()
 
     private lazy var logInButton: UIButton = {
@@ -76,7 +111,7 @@ class LogInViewController: UIViewController {
         setupKeyboardObservers()
         hideKeyboardWhenTappedAround()
     }
-    
+
     @objc private func logInButtonTapped() {
         let profileVC = ProfileViewController()
         navigationController?.pushViewController(profileVC, animated: true)
@@ -102,8 +137,9 @@ class LogInViewController: UIViewController {
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
     }
+
     private func setupLayout() {
-        [logoImageView, emailTextField, passwordTextField, logInButton].forEach {
+        [logoImageView, containerView, logInButton].forEach {
             contentView.addSubview($0)
         }
 
@@ -113,19 +149,14 @@ class LogInViewController: UIViewController {
             logoImageView.widthAnchor.constraint(equalToConstant: 100),
             logoImageView.heightAnchor.constraint(equalToConstant: 100),
 
-            emailTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 120),
-            emailTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            emailTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            emailTextField.heightAnchor.constraint(equalToConstant: 50),
+            containerView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 120),
+            containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            containerView.heightAnchor.constraint(equalToConstant: 100),
 
-            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 16),
-            passwordTextField.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
-            passwordTextField.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 50),
-
-            logInButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 16),
-            logInButton.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
-            logInButton.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor),
+            logInButton.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 16),
+            logInButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            logInButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             logInButton.heightAnchor.constraint(equalToConstant: 50),
 
             logInButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
